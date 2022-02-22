@@ -14,15 +14,45 @@ var isLoop bool = true
 func GamePlay() {
 	fmt.Println("hello gamer")
 	diskInit()
-	printDisks()
-	for isLoop {
-		sel_disk := selectDisk()
-		sel_direction := selectMoveDirection()
-		if moveCheck(sel_direction) {
-			diskMove(sel_disk, sel_direction)
-		}
-		printDisks()
+	fields := stickInit()
+	//printDisks()
+	//for isLoop {
+	//sel_disk := selectDisk()
+	//sel_direction := selectMoveDirection()
+	//if moveCheck(sel_direction) {
+	//	diskMove(sel_disk, sel_direction)
+	//}
+	//printDisks()
+	//for i := 0; i < 3; i++ {
+	//	fmt.Printf("%d,%d,%d", fields[i][0], fields[i][1], fields[i][2])
+	//}
+	//}
+	for i := 0; i < 3; i++ {
+		fmt.Printf("%d,%d,%d\n", fields[i][0], fields[i][1], fields[i][2])
 	}
+}
+
+func stickInit() [][]int {
+	fields := make([][]int, 3)
+	for i := 0; i < 3; i++ {
+		fields[i] = make([]int, 3)
+		fields[i][0] = i + 1
+	}
+	return fields
+}
+
+func selectStick() int {
+	var input int
+	fmt.Println("Which disk do you want to move?")
+	fmt.Scan(&input)
+	return input
+}
+
+func selectMoveDirection() int {
+	var input int
+	fmt.Println("Where do you want to move?")
+	fmt.Scan(&input)
+	return input
 }
 
 func diskInit() {
@@ -50,13 +80,14 @@ func selectDisk() int {
 	return input
 }
 
+/*
 func selectMoveDirection() int {
 	var input int
 	fmt.Println("Where do you want to move?")
 	fmt.Scan(&input)
 	return input
 }
-
+*/
 func diskMove(_d, _x int) {
 	switch _d {
 	case 1:
