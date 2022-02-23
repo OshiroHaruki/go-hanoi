@@ -1,12 +1,9 @@
 package main
 
-import(
-	"fmt"
-	"go-hanoi/rule"
+import (
 	"go-hanoi/game"
 )
 
 func main() {
-	fmt.Println(rule.Printtt())
 	game.GamePlay()
 }
