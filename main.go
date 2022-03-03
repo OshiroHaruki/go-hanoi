@@ -1,9 +1,10 @@
 package main
 
 import (
-	"go-hanoi/game"
+	"go-hanoi/gamegui"
 )
 
 func main() {
-	game.GamePlay()
+	//game.GamePlay()
+	gamegui.GamePlay_view()
 }

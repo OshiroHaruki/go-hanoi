@@ -5,23 +5,24 @@ import (
 )
 
 func GamePlay() {
+	/* this is game of console*/
 	fmt.Println("hello player")
 	// Init game parameters and print field.
 	var isLoop bool = true
 	field := stickInit()
-	printField(field)
+	PrintField(field)
 
 	for isLoop {
-		sel_stick := selectStick()
-		sel_direction := selectMoveDirection()
+		sel_stick := selectStick()             //入力1
+		sel_direction := selectMoveDirection() //入力2
 		isMove := moveDisk(sel_stick, sel_direction, field)
 		if isMove {
 			fmt.Println("you can move disk.")
 		} else {
 			fmt.Println("you cannot move this!")
 		}
-		printField(field)
-		if checkEnd(field) {
+		PrintField(field)
+		if CheckEnd(field) {
 			fmt.Println("Complete!")
 			isLoop = false
 		}
@@ -88,20 +89,13 @@ func moveDisk(_s, _x int, _f [][]int) bool {
 	return false
 }
 
-func printField(fields [][]int) {
+func PrintField(fields [][]int) {
 	// [line][column]
 	for i := 0; i < 3; i++ {
 		fmt.Printf("%d,%d,%d\n", fields[i][0], fields[i][1], fields[i][2])
 	}
 }
 
-func checkEnd(fields [][]int) bool {
-	/*
-		if fields[0][2] == 1 { //右端の一番上にサイズ1のディスクがきたら終了。
-			return true
-		}
-		return false
-	*/
-	// 補完機能君が以下のワンライナーでいいよって言ってくれた。すげえ。
+func CheckEnd(fields [][]int) bool {
 	return fields[0][2] == 1
 }
